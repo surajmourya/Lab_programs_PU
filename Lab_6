@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+int data;
+struct Node* next;
+};
+struct Node* findNthFromEnd(struct Node* head, int N) {
+
+// write your code here
+
+}
+int main() {
+int N;
+struct Node* head = NULL;
+struct Node* temp = NULL;
+struct Node* newnode = NULL;
+// Creating a linked list
+int choice = 1;
+while (choice) {
+newnode = (struct Node*)malloc(sizeof(struct Node));
+printf("Enter Data:\n");
+scanf("%d", &newnode->data);
+newnode->next = NULL;
+if (head == NULL) {
+head = temp = newnode;
+} else {
+temp->next = newnode;
+temp = newnode;
+}
+printf("Do you want to continue (0,1)?\n");
+scanf("%d", &choice);
+}
+printf("Linked List: ");
+struct Node* currentNode = head;
+while (currentNode != NULL) {
+printf("%d", currentNode->data);
+currentNode = currentNode->next;
+if (currentNode != NULL) {
+printf(" -> ");
+}
+}
+printf("\n");
+printf("Enter the value of N: ");
+scanf("%d", &N);
+struct Node* nthNode = findNthFromEnd(head, N);
+if (nthNode != NULL) {
+printf("The value at the %dth node from the end is %d\n", N, nthNode->data);
+} else {
+printf("Invalid N or N is greater than the length of the linked list.\n");
+}
+return 0;
+}
